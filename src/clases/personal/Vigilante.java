@@ -5,6 +5,7 @@ import clases.registro.InfoRegistro;
 
 import java.time.LocalTime;
 import java.util.ArrayList;
+import java.util.Optional;
 
 
 public class Vigilante extends Persona {
@@ -20,12 +21,28 @@ public class Vigilante extends Persona {
         return hora.isAfter(hora6am) && hora.isBefore(hora10pm);
     }
 
-    private boolean verificarCarnet(int carnet){
-        return  personasList.stream().anyMatch(c ->
-                c.getId() == carnet);
+    private Optional<PersonaCarnet> verificarCarnet(PersonaCarnet carnet){
+        return  personasList.stream().filter(c ->
+                c.getId() == carnet.getId() && carnet.isEspecial()
+                ).findAny();
     }
 
-    public boolean darAcceso(int carnet, ArrayList<Cubiculo> puestos){
+    private boolean verficarCubiculos(ArrayList<Cubiculo> puestos, PersonaCarnet carnet, int op){
+
+        if(op == 1){
+            puestos = puestos.stream().filter( c ->
+                    !c.isOcupado() &&
+                    ).
+        }
+
+    }
+
+    private void guardarInformacion(){
+
+    }
+    public boolean darAcceso(int id,int op, ArrayList<Cubiculo> puestos){
+
+        PersonaCarnet carnet = new PersonaCarnet(id);
         boolean pass = true;
 
         pass = this.verificarHora();
@@ -34,10 +51,14 @@ public class Vigilante extends Persona {
             return false;
         }
 
-        pass = this.verificarCarnet(carnet);
-        if(!pass){
+        Optional<PersonaCarnet> access = this.verificarCarnet(carnet);
+        if(access.isEmpty()){
            return false;
         }
+
+        carnet = access.get();
+
+        pass = this.verficarCubiculos(puestos,carnet,op);
 
         return pass;
 
