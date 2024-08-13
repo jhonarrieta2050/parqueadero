@@ -1,12 +1,13 @@
 package clases.estacionamiento;
 
 public abstract class Cubiculo {
-    protected static int numeroCubiculo;
+    protected int numeroCubiculo;
     protected boolean especial;
     protected boolean ocupado = false;
+    protected static int conteo;
 
     public Cubiculo(boolean especial){
-        numeroCubiculo++;
+        this.numeroCubiculo = conteo++;
         this.especial = especial;
     }
 
@@ -24,6 +25,10 @@ public abstract class Cubiculo {
 
     public void setEspecial(boolean especial) {
         this.especial = especial;
+    }
+
+    public int getNumeroCubiculo() {
+        return numeroCubiculo;
     }
 
     abstract void estacionarVehiculo();
