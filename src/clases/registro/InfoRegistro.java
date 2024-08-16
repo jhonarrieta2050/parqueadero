@@ -1,20 +1,22 @@
 package clases.registro;
 
+import clases.estacionamiento.Cubiculo;
 import clases.personal.PersonaCarnet;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class InfoRegistro {
     private PersonaCarnet persona;
     private int placaVehiculo;
     private LocalDate fech;
-    private int NCubiculo;
+    private Cubiculo cubiculo;
 
-    public InfoRegistro(PersonaCarnet carnet, int placaVehiculo,int cubiculo){
+    public InfoRegistro(PersonaCarnet carnet, int placaVehiculo,Cubiculo cubiculo){
         this.persona = carnet;
         this.placaVehiculo = placaVehiculo;
         this.fech = LocalDate.now();
-        this.NCubiculo = cubiculo;
+        this.cubiculo = cubiculo;
     }
 
     public PersonaCarnet getPersona() {
@@ -41,11 +43,11 @@ public class InfoRegistro {
         this.fech = fech;
     }
 
-    public int getNCubiculo() {
-        return NCubiculo;
+    public Cubiculo getCubiculo() {
+        return cubiculo;
     }
 
-    public void setNCubiculo(int NCubiculo) {
-        this.NCubiculo = NCubiculo;
+    public void setCubiculo(Cubiculo cubiculo) {
+        this.cubiculo = cubiculo;
     }
 }

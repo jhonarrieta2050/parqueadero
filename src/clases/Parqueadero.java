@@ -10,27 +10,28 @@ import java.util.Scanner;
 
 public class Parqueadero{
 
+    private final String nombreParqueadero;
     private final ArrayList<Cubiculo> estacionamiento;
     private Vigilante vigilante;
     private final Scanner scanner = new Scanner(System.in);
 
-    public Parqueadero(){
+    public Parqueadero(Vigilante vigilante,String nombrePaqueadero){
+        this.nombreParqueadero = nombrePaqueadero;
+        this.vigilante = vigilante;
         estacionamiento = new ArrayList<>();
-        vigilante = new Vigilante();
-        estacionamiento.add(new CubiculoAutos(true));
-        estacionamiento.add(new CubiculoAutos(true));
-        estacionamiento.add(new CubiculoAutos(true));
-        estacionamiento.add(new CubiculoAutos(true));
-        estacionamiento.add(new CubiculoAutos(false));
-        estacionamiento.add(new CubiculoAutos(false));
-        estacionamiento.add(new CubiculoAutos(false));
-        estacionamiento.add(new CubiculoAutos(false));
         estacionamiento.add(new CubiculoMotos(true));
         estacionamiento.add(new CubiculoMotos(true));
         estacionamiento.add(new CubiculoMotos(true));
         estacionamiento.add(new CubiculoMotos(false));
         estacionamiento.add(new CubiculoMotos(false));
         estacionamiento.add(new CubiculoMotos(false));
+        estacionamiento.add(new CubiculoAutos(true));
+        estacionamiento.add(new CubiculoAutos(true));
+        estacionamiento.add(new CubiculoAutos(true));
+        estacionamiento.add(new CubiculoAutos(false));
+        estacionamiento.add(new CubiculoAutos(false));
+        estacionamiento.add(new CubiculoAutos(false));
+
 
     }
 
@@ -55,5 +56,9 @@ public class Parqueadero{
 
         vigilante.darSalida(new PersonaCarnet(id),pl,estacionamiento);
 
+    }
+
+    public String getNombreParqueadero() {
+        return nombreParqueadero;
     }
 }
