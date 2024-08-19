@@ -11,7 +11,7 @@ import java.util.Optional;
 public class Vigilante extends Persona {
     static ArrayList<PersonaCarnet> personasList;
     private final ArrayList<InfoRegistro> planilla;
-    private Verificacion verificacion;
+    private final Verificacion verificacion;
 
     public Vigilante(String nombre, String apellido){
         personasList = new ArrayList<>();
@@ -61,14 +61,6 @@ public class Vigilante extends Persona {
 
     }
 
-    public Optional<InfoRegistro> verificarRegistrado(PersonaCarnet carnet, int pl, ArrayList<Cubiculo> puestos ) {
-        return planilla.stream()
-                .filter(c -> c.getPlacaVehiculo() == pl && c.getPersona().getId() == carnet.getId())
-                .findFirst();
-    }
-
-
-
     public boolean darSalida(PersonaCarnet carnet, int pl, ArrayList<Cubiculo> puestos){
         Optional<InfoRegistro> info = verificacion.verificarRegistrado(carnet,pl,puestos,planilla);
         if(info.isEmpty()){
@@ -79,5 +71,9 @@ public class Vigilante extends Persona {
         System.out.println("Salida con exito");
         System.out.println("Hasta la proxima");
         return true;
+    }
+
+    public void verPlanilla(){
+        ImprimirInfo.imprimir(planilla);
     }
 }

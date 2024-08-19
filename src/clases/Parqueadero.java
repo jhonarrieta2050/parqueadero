@@ -4,6 +4,7 @@ import clases.concurrencia.Reloj;
 import clases.estacionamiento.Cubiculo;
 import clases.estacionamiento.CubiculoAutos;
 import clases.estacionamiento.CubiculoMotos;
+import clases.personal.ImprimirInfo;
 import clases.personal.PersonaCarnet;
 import clases.personal.Vigilante;
 import java.util.ArrayList;
@@ -57,6 +58,14 @@ public class Parqueadero{
 
         vigilante.darSalida(new PersonaCarnet(id),pl,estacionamiento);
 
+    }
+
+    public void verCubiculos(){
+        ImprimirInfo.imprimir(estacionamiento);
+    }
+
+    public void verInformacionRegistro(){
+        vigilante.verPlanilla();
     }
 
     public String getNombreParqueadero() {
