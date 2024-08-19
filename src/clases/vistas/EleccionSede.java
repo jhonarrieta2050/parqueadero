@@ -49,7 +49,9 @@ public class EleccionSede {
             System.out.println("1.Entrada de vehiculo");
             System.out.println("2.Salida de vehiculo");
             System.out.println("3.Cambiar sede");
-            System.out.println("4.Terminar programa");
+            System.out.println("4.Ver cubiculos");
+            System.out.println("5.Ver informacion de registro");
+            System.out.println("6.Terminar programa");
             op = scanner.nextInt();
             switch (op) {
                 case 1:
@@ -62,6 +64,12 @@ public class EleccionSede {
                         pass = false;
                         break;
                         case 4:
+                            parqueadero.verCubiculos();
+                            break;
+                            case 5:
+                            parqueadero.verInformacionRegistro();
+                            break;
+                        case 6:
                             System.exit(0);
                             break;
             }

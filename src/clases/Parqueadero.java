@@ -3,6 +3,7 @@ package clases;
 import clases.estacionamiento.Cubiculo;
 import clases.estacionamiento.CubiculoAutos;
 import clases.estacionamiento.CubiculoMotos;
+import clases.personal.ImprimirInfo;
 import clases.personal.PersonaCarnet;
 import clases.personal.Vigilante;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ public class Parqueadero{
 
     private final String nombreParqueadero;
     private final ArrayList<Cubiculo> estacionamiento;
-    private Vigilante vigilante;
+    private final Vigilante vigilante;
     private final Scanner scanner = new Scanner(System.in);
 
     public Parqueadero(Vigilante vigilante,String nombrePaqueadero){
@@ -56,6 +57,14 @@ public class Parqueadero{
 
         vigilante.darSalida(new PersonaCarnet(id),pl,estacionamiento);
 
+    }
+
+    public void verCubiculos(){
+        ImprimirInfo.imprimir(estacionamiento);
+    }
+
+    public void verInformacionRegistro(){
+        vigilante.verPlanilla();
     }
 
     public String getNombreParqueadero() {

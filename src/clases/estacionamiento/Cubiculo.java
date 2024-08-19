@@ -32,4 +32,13 @@ public abstract class Cubiculo {
     }
 
     abstract void estacionarVehiculo();
+
+    @Override
+    public String toString() {
+        return "Cubiculo{" +
+                "numeroCubiculo=" + numeroCubiculo +
+                ", Es especial=" + especial +
+                ", Esta ocupado?=" + (ocupado ? "Si" : "No") +
+                '}';
+    }
 }

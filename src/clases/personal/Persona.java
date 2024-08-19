@@ -9,4 +9,12 @@ public abstract class Persona {
         this.apellido = apellido;
     }
     public Persona(){}
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public String getApellido() {
+        return apellido;
+    }
 }
