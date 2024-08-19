@@ -11,12 +11,14 @@ public class InfoRegistro {
     private int placaVehiculo;
     private LocalDate fech;
     private Cubiculo cubiculo;
+    private boolean vencido;
 
     public InfoRegistro(PersonaCarnet carnet, int placaVehiculo,Cubiculo cubiculo){
         this.persona = carnet;
         this.placaVehiculo = placaVehiculo;
         this.fech = LocalDate.now();
         this.cubiculo = cubiculo;
+        this.vencido = false;
     }
 
     public PersonaCarnet getPersona() {
@@ -49,5 +51,13 @@ public class InfoRegistro {
 
     public void setCubiculo(Cubiculo cubiculo) {
         this.cubiculo = cubiculo;
+    }
+
+    public boolean isVencido() {
+        return vencido;
+    }
+
+    public void setVencido(boolean vencido) {
+        this.vencido = vencido;
     }
 }

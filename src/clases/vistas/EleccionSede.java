@@ -1,6 +1,8 @@
 package clases.vistas;
 
 import clases.Parqueadero;
+import clases.concurrencia.IniciarReloj;
+import clases.concurrencia.Reloj;
 import clases.personal.Vigilante;
 
 import java.util.Scanner;
@@ -9,11 +11,12 @@ public class EleccionSede {
 
     private final Parqueadero[] parqueaderos = new Parqueadero[2];
     private final Scanner scanner = new Scanner(System.in);
-
+    private static final Thread reloj = new Thread(new IniciarReloj());
     public EleccionSede() {
         Vigilante vigilante = new Vigilante("pepe","elmago");
         parqueaderos[0] = new Parqueadero(vigilante,"Cuatro Vientos");
         parqueaderos[1] = new Parqueadero(vigilante,"Centro");
+        reloj.start();
     }
 
     public Parqueadero eleccion(){

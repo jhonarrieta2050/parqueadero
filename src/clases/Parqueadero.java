@@ -1,5 +1,6 @@
 package clases;
 
+import clases.concurrencia.Reloj;
 import clases.estacionamiento.Cubiculo;
 import clases.estacionamiento.CubiculoAutos;
 import clases.estacionamiento.CubiculoMotos;
@@ -12,12 +13,13 @@ public class Parqueadero{
 
     private final String nombreParqueadero;
     private final ArrayList<Cubiculo> estacionamiento;
-    private Vigilante vigilante;
+    private final Vigilante vigilante;
     private final Scanner scanner = new Scanner(System.in);
 
     public Parqueadero(Vigilante vigilante,String nombrePaqueadero){
         this.nombreParqueadero = nombrePaqueadero;
         this.vigilante = vigilante;
+
         estacionamiento = new ArrayList<>();
         estacionamiento.add(new CubiculoMotos(true));
         estacionamiento.add(new CubiculoMotos(true));
@@ -31,7 +33,6 @@ public class Parqueadero{
         estacionamiento.add(new CubiculoAutos(false));
         estacionamiento.add(new CubiculoAutos(false));
         estacionamiento.add(new CubiculoAutos(false));
-
 
     }
 
