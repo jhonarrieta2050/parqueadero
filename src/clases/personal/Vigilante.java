@@ -1,5 +1,6 @@
 package clases.personal;
 
+import clases.concurrencia.Reloj;
 import clases.estacionamiento.Cubiculo;
 import clases.registro.InfoRegistro;
 
@@ -16,6 +17,7 @@ public class Vigilante extends Persona {
         personasList = new ArrayList<>();
         planilla = new ArrayList<>();
         verificacion = new Verificacion();
+
         PersonaCarnet usuario = new PersonaCarnet("jhon","arrieta",1042,true);
         personasList.add(usuario);
         this.nombre = nombre;

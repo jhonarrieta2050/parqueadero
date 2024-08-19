@@ -1,5 +1,7 @@
 package clases.personal;
 
+import clases.concurrencia.Alarma;
+import clases.concurrencia.Reloj;
 import clases.estacionamiento.Cubiculo;
 import clases.registro.InfoRegistro;
 
@@ -8,6 +10,8 @@ import java.util.ArrayList;
 import java.util.Optional;
 
 public class Verificacion {
+    private static Reloj reloj;
+    private Alarma alarma = new Alarma();
 
     public Optional<PersonaCarnet> verificarCarnet(PersonaCarnet carnet, ArrayList<PersonaCarnet> personasList) {
         return  personasList.stream().filter(c ->
@@ -46,11 +50,7 @@ public class Verificacion {
 
     public boolean verificarHora(){
 
-        LocalTime hora = LocalTime.now();
-        LocalTime hora10pm = LocalTime.of(22,00);
-        LocalTime hora6am = LocalTime.of(6,00);
-
-        return hora.isAfter(hora6am) && hora.isBefore(hora10pm);
+        return true;
     }
 
     public void guardarInformacion(PersonaCarnet carnet, Cubiculo cubiculo, int pl, ArrayList<InfoRegistro> planilla){
@@ -59,8 +59,10 @@ public class Verificacion {
     }
 
     public Optional<InfoRegistro> verificarRegistrado(PersonaCarnet carnet, int pl, ArrayList<Cubiculo> puestos,ArrayList<InfoRegistro> planilla ) {
-        return planilla.stream()
-                .filter(c -> c.getPlacaVehiculo() == pl && c.getPersona().getId() == carnet.getId())
+        Optional<InfoRegistro> op=  planilla.stream()
+                .filter(c -> c.getPlacaVehiculo() == pl && c.getPersona().getId() == carnet.getId() && !c.isVencido())
                 .findFirst();
+            op.ifPresent(c -> c.setVencido(true));
+            return op;
     }
 }
