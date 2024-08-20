@@ -13,7 +13,7 @@ public class InfoRegistro {
     private Cubiculo cubiculo;
     private boolean vencido;
 
-    public InfoRegistro(PersonaCarnet carnet, int placaVehiculo,Cubiculo cubiculo){
+    public InfoRegistro(PersonaCarnet carnet, int placaVehiculo, Cubiculo cubiculo) {
         this.persona = carnet;
         this.placaVehiculo = placaVehiculo;
         this.fecha = LocalDate.now();
@@ -60,16 +60,15 @@ public class InfoRegistro {
 
     public void setVencido(boolean vencido) {
         this.vencido = vencido;
-
-    @Override
-    public String toString() {
-        return "InfoRegistro{" +
-                "persona=" + persona.getNombre() + persona.getApellido() +
-                ", Placa del vehiculo=" + placaVehiculo +
-                ", fecha=" + fecha +
-                ", cubiculo numero=" + cubiculo +
-                '}';
-
     }
-}
+        @Override
+        public String toString () {
+            return "InfoRegistro{" +
+                    "persona=" + persona.getNombre() + persona.getApellido() +
+                    ", Placa del vehiculo=" + placaVehiculo +
+                    ", fecha=" + fecha +
+                    ", cubiculo numero=" + cubiculo +
+                    '}';
 
+        }
+    }

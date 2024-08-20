@@ -14,13 +14,13 @@ public class Parqueadero{
 
     private final String nombreParqueadero;
     private final ArrayList<Cubiculo> estacionamiento;
-    private final Vigilante vigilante;
+    private ArrayList<Vigilante> vigilantes;
+    private Vigilante vigilanteActual;
     private final Scanner scanner = new Scanner(System.in);
 
-    public Parqueadero(Vigilante vigilante,String nombrePaqueadero){
+    public Parqueadero(ArrayList<Vigilante> vigilantes,String nombrePaqueadero){
         this.nombreParqueadero = nombrePaqueadero;
-        this.vigilante = vigilante;
-
+        this.vigilantes = vigilantes;
         estacionamiento = new ArrayList<>();
         estacionamiento.add(new CubiculoMotos(true));
         estacionamiento.add(new CubiculoMotos(true));
@@ -46,7 +46,7 @@ public class Parqueadero{
         System.out.println("Placa del vehiculo");
         int pl = scanner.nextInt();
 
-        vigilante.darAcceso(id,op,estacionamiento,pl);
+        vigilanteActual.darAcceso(id,op,estacionamiento,pl);
     }
 
     public void salida(){
@@ -56,7 +56,7 @@ public class Parqueadero{
         System.out.println("Placa del vehiculo");
         int pl = scanner.nextInt();
 
-        vigilante.darSalida(new PersonaCarnet(id),pl,estacionamiento);
+        vigilanteActual.darSalida(new PersonaCarnet(id),pl,estacionamiento);
 
     }
 
@@ -65,10 +65,28 @@ public class Parqueadero{
     }
 
     public void verInformacionRegistro(){
-        vigilante.verPlanilla();
+        vigilanteActual.verPlanilla();
     }
 
     public String getNombreParqueadero() {
         return nombreParqueadero;
     }
+
+    public ArrayList<Vigilante> getVigilantes() {
+        return vigilantes;
+    }
+
+    public void setVigilantes(ArrayList<Vigilante> vigilantes){
+        this.vigilantes = vigilantes;
+    }
+
+
+    public Vigilante getVigilanteActual() {
+        return vigilanteActual;
+    }
+
+    public void setVigilanteActual(Vigilante vigilanteActual) {
+        this.vigilanteActual = vigilanteActual;
+    }
+
 }

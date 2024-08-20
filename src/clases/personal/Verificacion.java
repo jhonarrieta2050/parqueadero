@@ -11,7 +11,7 @@ import java.util.Optional;
 
 public class Verificacion {
     private static Reloj reloj;
-    private Alarma alarma = new Alarma();
+    private final Alarma alarma = new Alarma();
 
     public Optional<PersonaCarnet> verificarCarnet(PersonaCarnet carnet, ArrayList<PersonaCarnet> personasList) {
         return  personasList.stream().filter(c ->
@@ -38,7 +38,7 @@ public class Verificacion {
                     !c.isOcupado() && !c.isEspecial()
             ).findAny();
         }
-        System.out.println("HUBO ERROR");
+        System.out.println("No hay cubiculos disponibles actualmente");
 
         return Optional.empty();
 
@@ -49,7 +49,11 @@ public class Verificacion {
     }
 
     public boolean verificarHora(){
-
+        int hora = Reloj.getHora();
+        if(hora <= 7 || hora > 20 || hora >= 12 && hora <= 15 ){
+            System.out.println("El parqueadero se encuentra cerrado, vuelva mas tarde");
+            return false;
+        }
         return true;
     }
 
@@ -64,5 +68,11 @@ public class Verificacion {
                 .findFirst();
             op.ifPresent(c -> c.setVencido(true));
             return op;
+    }
+
+    public Optional<InfoRegistro> verificacionUsoDeLaMismaPesona(PersonaCarnet personaCarnet, int placa,ArrayList<InfoRegistro> planilla) {
+        return planilla.stream().filter(i ->
+            i.getPersona().getId() == personaCarnet.getId() && i.getPlacaVehiculo() == placa && !i.isVencido()
+        ).findAny();
     }
 }

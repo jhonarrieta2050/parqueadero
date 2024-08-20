@@ -1,9 +1,15 @@
 package clases.concurrencia;
 
+
+import static clases.personal.TurnoVigilante.*;
+
 public class Alarma {
 
     public void verificarLlamado(int op){
         switch (op){
+            case 6:
+                cambioVigilante("Manana");
+                break;
             case 8:
                 abierto();
                 break;
@@ -13,9 +19,14 @@ public class Alarma {
             case 13:
                 abierto();
                 break;
-            case 20:
+            case 18:
+                cambioVigilante("Noche");
+                break;
+            case 22:
                 cerrado();
                 break;
+            case 0:
+                cambioTurno();
         }
     }
 

@@ -4,7 +4,7 @@ public class Reloj {
 
    public static int Hora = 0;
    public Alarma alarma = new Alarma();
-    public void relojHora() {
+   public void relojHora() {
         try {
             while (true) {
                 if(Hora == 24){
@@ -13,7 +13,7 @@ public class Reloj {
                 if(Hora % 4 == 0) {
                     System.out.println("Son las  " + Hora + ":" + "00" + " Horas");
                 }
-                if (Hora == 8 || Hora == 12 || Hora == 13 || Hora == 20){
+                if (Hora == 6 || Hora == 8 || Hora == 12 || Hora == 15 || Hora == 18 || Hora == 22){
                     alarma.verificarLlamado(Hora);
                 }
 
@@ -25,4 +25,7 @@ public class Reloj {
         }
     }
 
+    public static int getHora() {
+        return Hora;
+    }
 }
