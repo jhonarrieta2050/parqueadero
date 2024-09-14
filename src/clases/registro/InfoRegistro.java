@@ -9,14 +9,16 @@ import java.util.ArrayList;
 public class InfoRegistro {
     private PersonaCarnet persona;
     private int placaVehiculo;
-    private LocalDate fech;
+    private LocalDate fecha;
     private Cubiculo cubiculo;
+    private boolean vencido;
 
-    public InfoRegistro(PersonaCarnet carnet, int placaVehiculo,Cubiculo cubiculo){
+    public InfoRegistro(PersonaCarnet carnet, int placaVehiculo, Cubiculo cubiculo) {
         this.persona = carnet;
         this.placaVehiculo = placaVehiculo;
-        this.fech = LocalDate.now();
+        this.fecha = LocalDate.now();
         this.cubiculo = cubiculo;
+        this.vencido = false;
     }
 
     public PersonaCarnet getPersona() {
@@ -36,11 +38,11 @@ public class InfoRegistro {
     }
 
     public LocalDate getFech() {
-        return fech;
+        return fecha;
     }
 
     public void setFech(LocalDate fech) {
-        this.fech = fech;
+        this.fecha = fech;
     }
 
     public Cubiculo getCubiculo() {
@@ -50,4 +52,23 @@ public class InfoRegistro {
     public void setCubiculo(Cubiculo cubiculo) {
         this.cubiculo = cubiculo;
     }
-}
+
+
+    public boolean isVencido() {
+        return vencido;
+    }
+
+    public void setVencido(boolean vencido) {
+        this.vencido = vencido;
+    }
+        @Override
+        public String toString () {
+            return "InfoRegistro{" +
+                    "persona=" + persona.getNombre() + persona.getApellido() +
+                    ", Placa del vehiculo=" + placaVehiculo +
+                    ", fecha=" + fecha +
+                    ", cubiculo numero=" + cubiculo +
+                    '}';
+
+        }
+    }
